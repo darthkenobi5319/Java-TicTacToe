@@ -1,0 +1,10 @@
+for x in `ls *.java`
+do 
+    echo $x
+    diff -w  $x $OTHERDIR/$x > /dev/null
+    status=$?
+    if (test $status -ne 0) then
+      xxdiff -w  $x $OTHERDIR/$x
+    fi
+done
+
